@@ -1,0 +1,38 @@
+{
+  "name": "crud-neo4j",
+  "version": "1.0.0",
+  "description": "nodejs CRUD Neo4j",
+  "author": "Tiago Barbosa Leite <tyagolp@gmail.com>",
+  "license": "MIT",
+  "keywords": [
+    "nodejs",
+    "express"
+  ],
+  "scripts": {
+    "dev": "sucrase-node src/server.js",
+    "queue": "nodemon src/server.js",
+    "build": "sucrase ./src -d ./dist --transforms imports",
+    "start": "node dist/server.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "jsonwebtoken": "^8.5.1",
+    "neo4j-driver": "^4.2.2",
+    "node-uuid": "^1.4.8",
+    "yup": "^0.28.1"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "nodemon": "^2.0.2",
+    "prettier": "^1.19.1",
+    "sucrase": "^3.12.1"
+  }
+}
