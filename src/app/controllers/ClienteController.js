@@ -7,17 +7,31 @@ require('dotenv/config');
 class ClienteController {
   async store(req, res) {
     const schema = Yup.object().shape({
-      nome: Yup.string().required().min(3),
-      cpf: Yup.string().required().length(14),
+      nome: Yup.string()
+        .required()
+        .min(3),
+      cpf: Yup.string()
+        .required()
+        .length(14),
       rg: Yup.string(),
       email: Yup.string(),
       telefone: Yup.string(),
-      logradouro: Yup.string().required().min(3),
+      logradouro: Yup.string()
+        .required()
+        .min(3),
       numero: Yup.string(),
-      bairro: Yup.string().required().min(3),
-      cidade: Yup.string().required().min(3),
-      estado: Yup.string().required().length(2),
-      cep: Yup.string().required().length(9),
+      bairro: Yup.string()
+        .required()
+        .min(3),
+      cidade: Yup.string()
+        .required()
+        .min(3),
+      estado: Yup.string()
+        .required()
+        .length(2),
+      cep: Yup.string()
+        .required()
+        .length(9),
       complemento: Yup.string(),
     });
     if (!(await schema.isValid(req.body))) {
@@ -63,17 +77,31 @@ class ClienteController {
 
   async update(req, res) {
     const schema = Yup.object().shape({
-      nome: Yup.string().required().min(3),
-      cpf: Yup.string().required().length(14),
+      nome: Yup.string()
+        .required()
+        .min(3),
+      cpf: Yup.string()
+        .required()
+        .length(14),
       rg: Yup.string(),
       email: Yup.string(),
-      telefone: Yup.string(), 
-      logradouro: Yup.string().required().min(3), 
+      telefone: Yup.string(),
+      logradouro: Yup.string()
+        .required()
+        .min(3),
       numero: Yup.string(),
-      bairro: Yup.string().required().min(3),
-      cidade: Yup.string().required().min(3),
-      estado: Yup.string().required().length(2),
-      cep: Yup.string().required().length(9),
+      bairro: Yup.string()
+        .required()
+        .min(3),
+      cidade: Yup.string()
+        .required()
+        .min(3),
+      estado: Yup.string()
+        .required()
+        .length(2),
+      cep: Yup.string()
+        .required()
+        .length(9),
       complemento: Yup.string(),
     });
     if (!(await schema.isValid(req.body))) {
@@ -112,8 +140,8 @@ class ClienteController {
       }
 
       const records = await session.run(
-        `MATCH (a:Cliente { id:$id }) SET a.nome = $nome, a.cpf = $cpf, a.rg = $rg, a.email = $email, 
-          a.telefone = $telefone, a.logradouro = $logradouro, a.numero = $numero, a.bairro = $bairro, 
+        `MATCH (a:Cliente { id:$id }) SET a.nome = $nome, a.cpf = $cpf, a.rg = $rg, a.email = $email,
+          a.telefone = $telefone, a.logradouro = $logradouro, a.numero = $numero, a.bairro = $bairro,
           a.cidade = $cidade, a.estado = $estado, a.cep = $cep, a.complemento = $complemento RETURN a`,
         req.body
       );
@@ -135,7 +163,13 @@ class ClienteController {
     const session = driver.session();
     try {
       const { records } = await session.run(`MATCH (a:Cliente) RETURN a;`);
-      return res.json(records);
+
+      if (records.length > 0) {
+        const result = records.map(record => record._fields[0].properties);
+        return res.json(result);
+      }
+
+      return res.json({});
     } catch (error) {
       return res.status(400).json({ message: error.message });
     } finally {
@@ -160,7 +194,12 @@ class ClienteController {
           id,
         }
       );
-      return res.json(records);
+
+      if (records.length > 0) {
+        const result = records.map(record => record._fields[0].properties);
+        return res.json(result);
+      }
+      return res.json({});
     } catch (error) {
       return res.status(400).json({ message: error.message });
     } finally {

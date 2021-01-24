@@ -8,12 +8,12 @@ import ClienteController from './app/controllers/ClienteController';
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
- 
+
 routes.post('/cliente', ClienteController.store);
 routes.put('/cliente', ClienteController.update);
 routes.get('/cliente', ClienteController.index);
 routes.get('/cliente/:id', ClienteController.findOne);
-routes.delete('/cliente', ClienteController.destroy);
+routes.post('/deleteCliente', ClienteController.destroy);
 routes.use(authMiddleware);
 
 // routes.post('/users', UsersController.store);
