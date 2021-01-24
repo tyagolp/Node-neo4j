@@ -33,10 +33,4 @@ routes.use(authMiddleware);
 //   },
 // };
 
-// // const corsOptions = {};
-// routes.post('/erp/users', cors(corsOptions), UsersController.store);
-// routes.post('/erp/sessions', cors(corsOptions), SessionController.store);
-
-// routes.post('/sessionsVerify', SessionController.getUserEnable);
-
 export default routes;
