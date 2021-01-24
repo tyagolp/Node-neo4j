@@ -17,7 +17,9 @@ class App {
   middlewares() {
     this.server.use(helmet());
     this.server.use(
-      cors({ origin: 'https://tyagolp-react-crud.herokuapp.com/' })
+      cors({
+        /* origin: 'https://tyagolp-react-crud.herokuapp.com/' */
+      })
     );
     this.server.use(express.json());
   }
