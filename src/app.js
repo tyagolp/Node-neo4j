@@ -18,7 +18,7 @@ class App {
     this.server.use(helmet());
     this.server.use(
       cors({
-        /* origin: 'https://tyagolp-react-crud.herokuapp.com/' */
+        origin: 'https://tyagolp-react-crud.herokuapp.com/',
       })
     );
     this.server.use(express.json());
