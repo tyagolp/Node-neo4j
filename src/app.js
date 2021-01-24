@@ -18,7 +18,7 @@ class App {
     this.server.use(helmet());
     this.server.use(
       cors({
-        origin: 'https://pedantic-mahavira-711b0f.netlify.app',
+        // origin: 'https://pedantic-mahavira-711b0f.netlify.app',
       })
     );
     this.server.use(express.json());
