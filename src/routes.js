@@ -16,9 +16,6 @@ routes.get('/cliente/:id', ClienteController.findOne);
 routes.post('/deleteCliente', ClienteController.destroy);
 routes.use(authMiddleware);
 
-// routes.post('/users', UsersController.store);
-// routes.post('/sessions', SessionController.store);
-
 // const origins = [
 //   'http://erp.iveloz.net',
 //   'http://erp.iveloz.net.br',
@@ -41,12 +38,5 @@ routes.use(authMiddleware);
 // routes.post('/erp/sessions', cors(corsOptions), SessionController.store);
 
 // routes.post('/sessionsVerify', SessionController.getUserEnable);
-
-// routes.get('/combo', ComboController.index);
-// routes.post('/combo', ComboController.store);
-
-// routes.get('/correio/:cep', CorreioController.index);
-
-// routes.post('/adesao/find', AdesaoController.index);
 
 export default routes;
